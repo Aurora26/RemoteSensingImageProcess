@@ -74,28 +74,40 @@
 ![image](https://github.com/intMinor/RemoteSensingImageProcess/blob/master/Screenshots/2.png)
 图2. 软件菜单栏展示
 
+![image](https://github.com/intMinor/RemoteSensingImageProcess/blob/master/Screenshots/3.png)
 图3. 波段选择
 
+![image](https://github.com/intMinor/RemoteSensingImageProcess/blob/master/Screenshots/4.png)
 图4. 加载测试图像1、4、7波段
 
+![image](https://github.com/intMinor/RemoteSensingImageProcess/blob/master/Screenshots/5.png)
 图5. 灰度拉伸窗口
 
+![image](https://github.com/intMinor/RemoteSensingImageProcess/blob/master/Screenshots/6.png)
 图6. 调整灰度范围
 
+![image](https://github.com/intMinor/RemoteSensingImageProcess/blob/master/Screenshots/7.png)
 图7. 缩小灰度范围结果
 
+![image](https://github.com/intMinor/RemoteSensingImageProcess/blob/master/Screenshots/8.png)
 图8. HIV变换窗口
 
+![image](https://github.com/intMinor/RemoteSensingImageProcess/blob/master/Screenshots/9.png)
 图9. HIV变换窗口
 
+![image](https://github.com/intMinor/RemoteSensingImageProcess/blob/master/Screenshots/10.png)
 图10. 边缘提取
 
+![image](https://github.com/intMinor/RemoteSensingImageProcess/blob/master/Screenshots/11.png)
 图11. 图像模糊
 
+![image](https://github.com/intMinor/RemoteSensingImageProcess/blob/master/Screenshots/12.png)
 图12. 色彩反相
 
+![image](https://github.com/intMinor/RemoteSensingImageProcess/blob/master/Screenshots/13.png)
 图13. 自由放缩移动图像
 
+![image](https://github.com/intMinor/RemoteSensingImageProcess/blob/master/Screenshots/14.png)
 图14. 项目文件结构
 
 
