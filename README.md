@@ -68,6 +68,7 @@
 
 ##五、	【测试结果】##
 
+![image](https://github.com/intMinor/RemoteSensingImageProcess/edit/master/Screenshots/1.png)
 图1. 软件主界面
 
 图2. 软件菜单栏展示
