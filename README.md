@@ -68,9 +68,10 @@
 
 ##五、	【测试结果】##
 
-![image](https://github.com/intMinor/RemoteSensingImageProcess/edit/master/Screenshots/1.png)
+![image](https://github.com/intMinor/RemoteSensingImageProcess/blob/master/Screenshots/1.png)
 图1. 软件主界面
 
+![image](https://github.com/intMinor/RemoteSensingImageProcess/blob/master/Screenshots/2.png)
 图2. 软件菜单栏展示
 
 图3. 波段选择
