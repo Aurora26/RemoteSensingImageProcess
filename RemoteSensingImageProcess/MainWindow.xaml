@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RemoteSensingImageProcess"
         Title="MainWindow" Style="{StaticResource NoBorderWindowsStyle}" Width="1080" Height="720" WindowStartupLocation="CenterScreen" Icon="Resource/Imgur.ico" Loaded="Window_Loaded">
-    <Grid>
+    <Grid Margin="3">
 
         <Grid.Resources>
             <TransformGroup x:Key="TransformGroup">
@@ -29,17 +29,18 @@
             </Grid.ColumnDefinitions>
             <Menu VerticalAlignment="Center">
                 <MenuItem Header="文件" Padding="10">
-                    <MenuItem Header="打开" Name="menu_openFile" Click="menu_openFile_Click"/>
-                    <MenuItem Header="保存" Name="menu_savaFile" Click="menu_savaFile_Click"/>
+                    <MenuItem Header="打开遥感图像" Name="menu_openFile" Click="menu_openFile_Click"/>
+                    <MenuItem Header="打开普通图像" Name="menu_openImageFile" Click="menu_openImageFile_Click"/>
+                    <!--<MenuItem Header="保存" Name="menu_savaFile" Click="menu_savaFile_Click"/>
                     <MenuItem Header="另存为" Name="menu_savaAs" Click="menu_savaAs_Click"/>
                     <Separator />
-                    <MenuItem Header="关闭文件" Name="menu_closeFile" Click="menu_closeFile_Click"/>
+                    <MenuItem Header="关闭文件" Name="menu_closeFile" Click="menu_closeFile_Click"/>-->
                 </MenuItem>
                 <MenuItem Header="图像处理" Padding="10">
                     <MenuItem Header="灰度拉伸" Name="menu_grayStretch" Click="menu_grayStretch_Click"/>
                     <MenuItem Header="IHS变换" Name="menu_IHSConvert" Click="menu_IHSConvert_Click"/>
+                    <MenuItem Header="边缘提取" Name="menu_Sharpen" Click="menu_Sharpen_Click"/>
                     <MenuItem Header="模糊" Name="menu_Blur" Click="menu_Blur_Click"/>
-                    <MenuItem Header="锐化" Name="menu_Sharpen" Click="menu_Sharpen_Click"/>
                     <MenuItem Header="反相" Name="menu_Negative" Click="menu_Negative_Click"/>
                     <MenuItem Header="黑白" Name="menu_Gray" Click="menu_Gray_Click"/>
                 </MenuItem>
@@ -66,6 +67,8 @@
                 <Image Name="image_content" RenderTransform="{StaticResource TransformGroup}" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
             </ContentControl>
         </ScrollViewer>
+        
+        
 
     </Grid>
 </Window>

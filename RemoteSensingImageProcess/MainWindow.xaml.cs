@@ -47,6 +47,9 @@ namespace RemoteSensingImageProcess
         public static double setIHS_H = 1;
         public static double setIHS_S = 1;
 
+        private OSGeo.GDAL.Dataset dataSet;
+        private System.Drawing.Rectangle pictureRect;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -188,7 +191,7 @@ namespace RemoteSensingImageProcess
                 {
                     String filename = OpenFileDialog.FileName.ToString();
 
-                    OSGeo.GDAL.Dataset dataSet = Gdal.Open(filename, Access.GA_ReadOnly);
+                    dataSet = Gdal.Open(filename, Access.GA_ReadOnly);
 
                     if (dataSet == null)
                     {
@@ -196,22 +199,53 @@ namespace RemoteSensingImageProcess
                         return;
                     }
 
-                    System.Drawing.Rectangle pictureRect = new System.Drawing.Rectangle();
+                    pictureRect = new System.Drawing.Rectangle();
                     pictureRect.X = 0;
                     pictureRect.Y = 0;
 
                     pictureRect.Width = Convert.ToInt16(this.mainScrollv.Width);
                     pictureRect.Height = Convert.ToInt16(this.mainScrollv.Height);
 
-                    int[] disband = { 3, 2, 1 };
+                    string[] metaData = dataSet.GetMetadata("");
 
-                    my_Bitmap = ImageOperate.GetImage(dataSet, pictureRect, disband);   //遥感影像构建位图
+                    BandWindow BandWindow = new BandWindow(metaData);
+                    BandWindow.Show();
 
-                    //my_Bitmap = new System.Drawing.Bitmap(filename);
+                    BandWindow.BandChoice += LoadImage;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("请导入正确的图像文件");
+                return;
+            }
+        }
+
+        private void menu_openImageFile_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Microsoft.Win32.OpenFileDialog OpenFileDialog = new Microsoft.Win32.OpenFileDialog();
+
+                OpenFileDialog.Filter = "所有图像文件 | *.bmp; *.pcx; *.png; *.jpg; *.gif;" +
+                                        "位图( *.bmp; *.jpg; *.png;...) | *.bmp; *.pcx; *.png; *.jpg; *.gif; *.tif; *.ico|";
+
+                OpenFileDialog.Title = "打开图像文件";
+
+                if (OpenFileDialog.ShowDialog() == true)
+                {
+                    String filename = OpenFileDialog.FileName.ToString();
+
+                    pictureRect = new System.Drawing.Rectangle();
+                    pictureRect.X = 0;
+                    pictureRect.Y = 0;
+
+                    pictureRect.Width = Convert.ToInt16(this.mainScrollv.Width);
+                    pictureRect.Height = Convert.ToInt16(this.mainScrollv.Height);
+
+                    my_Bitmap = new System.Drawing.Bitmap(filename);
 
                     //image_content.Stretch = Stretch.Fill;
-
-                    //this.image_content.Source = new BitmapImage(new Uri(filename));
 
                     image_content.Source = BitmapToBitmapSource(my_Bitmap);
                 }
@@ -412,6 +446,29 @@ namespace RemoteSensingImageProcess
             translateTransform.ScaleY = 1;
         }
 
+        private void LoadImage(int band3, int band2, int band1)
+        {
+            try
+            {
+                int[] disband = { band1, band2, band3 };
+
+                my_Bitmap = ImageOperate.GetImage(dataSet, pictureRect, disband);   //遥感影像构建位图
+
+                //my_Bitmap = new System.Drawing.Bitmap(filename);
+
+                //image_content.Stretch = Stretch.Fill;
+
+                //this.image_content.Source = new BitmapImage(new Uri(filename));
+
+                image_content.Source = BitmapToBitmapSource(my_Bitmap);
+            }
+            catch
+            {
+                MessageBox.Show("请导入正确的图像文件");
+                return;
+            }
+        }
+
         private void setViewSize()
         {
             mainScrollv.Width = this.ActualWidth;
@@ -531,7 +588,7 @@ namespace RemoteSensingImageProcess
             }
         }
 
-        //锐化
+        //边缘提取
         private System.Drawing.Bitmap SharpenImage(System.Drawing.Bitmap bitmap)
         {
             int height = bitmap.Height;
@@ -561,8 +618,10 @@ namespace RemoteSensingImageProcess
             int[] Soble1 = { 1, 2, 1, 0, 0, 0, -1, -2, -1 };
             int[] Soble2 = { -1, 0, 1, -2, 0, 2, -1, 0, 1 };
 
+            //边缘提取
+            int[] Soble3 = { 0, 1, 0, 1, -4, 1, 0, 1, 0 };
 
-            switch (0)
+            switch (6)
             {
                 case 0://Laplace1算子
                     template = Laplacian1;
@@ -580,6 +639,9 @@ namespace RemoteSensingImageProcess
                     template = Prewitt1;
                     break;
                 case 5://Soble2算子
+                    template = Prewitt1;
+                    break;
+                case 6://Soble3算子
                     template = Prewitt1;
                     break;
             }

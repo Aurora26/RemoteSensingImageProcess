@@ -5,8 +5,53 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RemoteSensingImageProcess"
         mc:Ignorable="d"
-        Title="BandWindow" Height="300" Width="300">
+        Title="BandWindow" Width="240" Height="360" Style="{StaticResource NoBorderWindowsStyle}" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="6*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Height="30" Grid.ColumnSpan="5" Name="Title" Background="#E0E0E0" MouseMove="Title_MouseMove" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="50" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="2" Orientation="Horizontal">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50" />
+                    </Grid.ColumnDefinitions>
+                    <Button Style="{StaticResource NoMouseOverButtonStyle_title}" Name="btn_minimize" Click="btn_minimize_Click">
+                        <TextBlock Style="{DynamicResource BarTextBlockStyle}" Text="&#xE949;"  Margin="0"/>
+                    </Button>
+                </Grid>
+            </StackPanel>
+        </Grid>
+
+        <TextBlock Style="{StaticResource BaseTextBlockStyle}" Grid.Column="1" Grid.Row="2" Text="Band R："></TextBlock>
+        <ComboBox Grid.Column="1" Grid.Row="3" Name="cmb_bandR" VerticalAlignment="Center" ></ComboBox>
+
+        <TextBlock Style="{StaticResource BaseTextBlockStyle}" Grid.Column="1" Grid.Row="4" Text="Band G："></TextBlock>
+        <ComboBox Grid.Column="1" Grid.Row="5" Name="cmb_bandG" VerticalAlignment="Center" ></ComboBox>
+
+        <TextBlock Style="{StaticResource BaseTextBlockStyle}" Grid.Column="1" Grid.Row="6" Text="Band B："></TextBlock>
+        <ComboBox Grid.Column="1" Grid.Row="7" Name="cmb_bandB" VerticalAlignment="Center" ></ComboBox>
+
+        <Button Style="{StaticResource NoMouseOverButtonStyle_body}" Grid.Column="1" Grid.Row="8" Name="buttonOK" Content="确定" HorizontalAlignment="Center" Width="160" Click="buttonOK_Click" ></Button>
     </Grid>
 </Window>

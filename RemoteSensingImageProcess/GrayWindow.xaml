@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RemoteSensingImageProcess"
         mc:Ignorable="d"
-        Title="GrayWindow" Width="400" Height="240" Style="{StaticResource NoBorderWindowsStyle}" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="Resource/Imgur.ico">
+        Title="GrayWindow" Width="400" Height="240" Style="{StaticResource NoBorderWindowsStyle}" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
